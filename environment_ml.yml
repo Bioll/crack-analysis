@@ -1,0 +1,12 @@
+name: /home/liu/cracks_env/ml
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - matplotlib
+  - numpy
+  - scikit-learn
+  - pytorch
+  - pandas
+  - python=3.12
+prefix: /home/liu/cracks_env/ml
