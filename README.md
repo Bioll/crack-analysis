@@ -33,6 +33,11 @@ src/                       源代码
   train_nn.py              阶段3: 训练 MLP 预测剩余寿命 RUL
   download_real_data.py    下载真实疲劳数据 (Virkler + NIMS)
   virkler_real_data.py     真实 Virkler 数据探索 (展示疲劳散布)
+  phase_field_holeplate.py 高难案例: 带孔板裂纹萌生 (gmsh挖孔)
+  phase_field_dynamic.py   高难案例: 动态裂纹分叉 (惯性+显式时间积分, Borden 2012)
+  phase_field_thermal.py   高难案例: 热震裂纹阵列 (热-力-相场耦合, Bourdin 2014)
+  phase_field_lpanel.py    高难案例: L形板 (gmsh, 未干净复现)
+  phase_field_lpanel_force.py  L形板力控版 (Neumann, 未干净复现)
 results/                   结果图与小型 CSV
 models/                    训练好的模型 (rul_mlp.pt)
 data/                      数据集 (大文件 .gitignore, 由 fatigue_dataset_gen.py 生成)

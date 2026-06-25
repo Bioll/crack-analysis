@@ -67,6 +67,15 @@
 | Carrara 2020 | 相场疲劳 | `phase_field_fatigue.py` | a-N 潜伏+扩展 ✅ |
 | Paris 1963 | da/dN | `paris_fatigue.py` | 斜率 m=3 ✅ |
 
+## 四.5、高难案例复刻 (4 个, 3 成功 1 未成)
+
+| 案例 | 脚本 | 新增能力 | 结果 |
+|------|------|---------|------|
+| 带孔板裂纹萌生 | `phase_field_holeplate.py` | gmsh OCC 挖孔 | ✅ 干净: 孔两侧萌生水平扩展 |
+| 动态裂纹分叉 (Borden 2012) | `phase_field_dynamic.py` | 惯性项+显式中心差分时间积分 | ✅ 分叉复现 (略杂, 有动态边缘效应) |
+| 热震裂纹阵列 (Bourdin 2014) | `phase_field_thermal.py` | 瞬态热扩散+热弹性多物理耦合 | ✅ 周期阵列复现 (略斜) |
+| L 形板 (Winkler) | `phase_field_lpanel.py` / `_force.py` | gmsh L形网格+Neumann力控 | ❌ 未干净复现: 裂纹总在加载/支撑处, 需精确照搬论文设置(刚性加载块+加载/支撑区禁裂) |
+
 ## 五、真实疲劳数据来源 (用 `src/download_real_data.py` 获取)
 
 | 数据 | 内容 | 来源 | 说明 |
