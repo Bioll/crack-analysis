@@ -8,6 +8,10 @@ results/sent/fields.npz
 data/fatigue_ml_dataset.csv
 *.npz
 
+# 第三方真实数据 (各有来源/许可, 不随仓库分发; 用 src/download_real_data.py 获取)
+data/virkler/
+data/nims/
+
 # 系统/编辑器
 .DS_Store
 .vscode/

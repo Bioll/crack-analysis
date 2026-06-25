@@ -21,13 +21,18 @@
 
 ```
 src/                       源代码
-  phase_field_sent.py      阶段1: 相场法单边缺口拉伸(SENT), 生成裂纹 + 损伤场/载荷曲线
+  phase_field_sent.py      阶段1: 相场法SENT拉伸(mode-I), 生成裂纹 + 损伤场/载荷曲线
+  phase_field_shear.py     复刻 Miehe mode-II 剪切 (裂纹斜向扩展)
+  phase_field_amor.py      复刻 Amor 2009 拉/压不对称 (受压抑制开裂)
+  phase_field_bourdin1d.py 复刻 Bourdin/AT2 1D 杆 (软化曲线 + 最优损伤剖面)
   analyze_crack.py         阶段2: 提取裂纹长度/CMOD/曲折度/分叉/方向/K_c + 萌生/等级/失稳标签
   paris_fatigue.py         疲劳(快速): Paris 公式 da/dN, a-N 曲线 + 寿命
   phase_field_fatigue.py   疲劳(高保真): Carrara 2020 相场疲劳, 裂纹逐圈扩展
   replot_fatigue.py        相场疲劳曲线重绘工具
   fatigue_dataset_gen.py   阶段3 数据生成: 扫多工况造疲劳数据集
   train_nn.py              阶段3: 训练 MLP 预测剩余寿命 RUL
+  download_real_data.py    下载真实疲劳数据 (Virkler + NIMS)
+  virkler_real_data.py     真实 Virkler 数据探索 (展示疲劳散布)
 results/                   结果图与小型 CSV
 models/                    训练好的模型 (rul_mlp.pt)
 data/                      数据集 (大文件 .gitignore, 由 fatigue_dataset_gen.py 生成)
@@ -77,6 +82,12 @@ python src/train_nn.py              # 训练并评估
 - **断裂韧性**: 方法B `K_c=√(E'·Gc)`，相场扩展时强制 G=Gc。
 - **疲劳**: Paris (经验/快) 与相场疲劳 (Carrara 2020, 能量退化/高保真) 两条路互验。
 - **神经网络**: MLP, 输入(裂纹长, 应力, ΔK)→剩余寿命; 留出部分载荷测泛化。
+
+## 参考文献与验证
+
+本项目复刻自相场断裂/疲劳的奠基与基准工作（Miehe 2010、Ambati 2015、Carrara 2020、Paris 1963 等），
+材料参数与 Miehe SENT 基准完全一致，方法与多个开源实现 (saugatsn、PhaseFieldX 等) 同属一族。
+详见 **[REFERENCES.md](REFERENCES.md)**（含论文清单、代码对照表、参数验证）。
 
 ## 局限 (已知)
 
